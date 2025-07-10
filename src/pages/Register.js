@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Register=()=>{
   const [user,setUser]=useState({
     name:"",
@@ -7,6 +8,7 @@ const Register=()=>{
     password:"",
     role:"SEEKER"
   });
+   const navigate = useNavigate();
 
 
 const handleChange=(e)=>{
@@ -16,6 +18,7 @@ const handleChange=(e)=>{
     try{
         await axios.post("http://localhost:8080/auth/registeruser",user);
         alert("Registration succesfull Now Login")
+         navigate("/login");
     }catch(err){
         alert("Error during Registartion");
     }
@@ -24,7 +27,7 @@ const handleChange=(e)=>{
 
 
 return(
-  <div className="auth-wrapper">
+  
     <div className="Register">
         <h2>Welcome</h2>
         <input name="name" placeholder="Name" onChange={handleChange} /> <br/>
@@ -37,7 +40,7 @@ return(
 </select> <br/>
 <button type="submit" onClick={registeruser}>Submit</button>
     </div>
-    </div>
+    
 );
 };
 export default Register;

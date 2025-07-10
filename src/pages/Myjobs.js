@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 const Myjobs=()=>{
     const [Jobs,setJobs]=useState([]);
 
@@ -22,9 +23,10 @@ const Myjobs=()=>{
     };
     return (
     <div style={{ padding: "20px" }}>
-      <h2>📋 My Posted Jobs</h2>
+      <h2>My Posted Jobs</h2>
       {Jobs.length === 0 ? (
         <p>No jobs posted yet.</p>
+        
       ) : (
         Jobs.map((job) => (
           <div key={job.id} style={styles.card}>
