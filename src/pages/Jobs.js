@@ -14,8 +14,10 @@ const fetchJobs=async()=>{
       try{
         const token = localStorage.getItem("token");
         const res= await axios.get("http://localhost:8080/api/jobs",{  headers: { Authorization: `Bearer ${token}` }, });
+         console.log("Response data:", res.data);
         setJobs(res.data);
       }catch(err){
+         console.error("Error fetching jobs:", err);
             alert("job not found")
         }
      
